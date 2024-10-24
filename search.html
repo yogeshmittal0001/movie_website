@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+    body {
+        background-image: url('img/search.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    .container {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+</style>
+
+<body>
+    <div class="container mt-5">
+        <h1>Search Results for "<span id="search-query"></span>"</h1>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        // Get the query parameter from the URL
+        const params = new URLSearchParams(window.location.search);
+        const query = params.get('query');
+
+        // Display the search query
+        document.getElementById('search-query').textContent = query;
+
+        // Example movie data (in a real application, this would come from a database or API)
+        const movies = [
+            { title: 'KGF', url: 'Episode1.html' },
+            { title: 'Thor', url: 'Episode4.html' },
+            { title: 'Chandu', url: 'Episode3.html' }
+        ];
+
+        // Filter movies based on the search query
+        const filteredMovies = movies.filter(movie => 
+            movie.title.toLowerCase().includes(query.toLowerCase())
+        );
+
+        // Display the results
+        const resultsDiv = document.getElementById('results');
+        if (filteredMovies.length > 0) {
+            filteredMovies.forEach(movie => {
+                const movieElement = document.createElement('div');
+                movieElement.className = 'mb-3';
+                movieElement.innerHTML = `<a href="${movie.url}" class="btn btn-primary">${movie.title}</a>`;
+                resultsDiv.appendChild(movieElement);
+            });
+        } else {
+            resultsDiv.innerHTML = '<p>No results found.</p>';
+        }
+    </script>
+</body>
+</html>

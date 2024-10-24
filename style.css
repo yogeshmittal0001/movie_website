@@ -270,6 +270,35 @@ h6 {
   color: crimson;
 }
 
+.round-button {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  position: fixed; 
+  top: 20px; 
+  right: 20px; 
+  background-color: #02080c; 
+  color: white; 
+  border: none;
+  width: 80px;
+  height: 80px; 
+  border-radius: 50%; 
+  font-size: 24px; 
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 1000; 
+
+
+}
+
+.round-button img {
+  width: 50%;
+  height: 50%;
+  position: relative;
+ top: 20px;
+  object-fit: cover;
+}
+
 /* ************ */
 .scroll-to-top {
   position: fixed;
